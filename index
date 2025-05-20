@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rebus Gåde</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 1rem;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    .rebus {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .rebus img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .rebus img:hover {
+      transform: scale(1.08);
+      border-color: #bbb;
+    }
+
+    input[type="text"] {
+      padding: 0.7rem;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background-color: #3b7ddd;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2f65b6;
+    }
+
+    .feedback {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 600px) {
+      .rebus img {
+        width: 70px;
+        height: 70px;
+      }
+
+      input[type="text"] {
+        font-size: 1rem;
+      }
+
+      button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🧩 Gæt rebussen!</h1>
+
+  <div class="rebus">
+    <img src="https://cdn-icons-png.flaticon.com/512/3159/3159066.png" alt="Luksus" title="Luksus">
+    <img src="https://cdn-icons-png.flaticon.com/512/888/888064.png" alt="Ophold" title="Ophold">
+    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046876.png" alt="Bed & Breakfast" title="Bed & Breakfast">
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" alt="Heartland" title="Heartland">
+    <img src="https://cdn-icons-png.flaticon.com/512/554/554550.png" alt="Festival" title="Festival">
+  </div>
+
+  <input type="text" id="guess" placeholder="Skriv din gæt her..." />
+  <br>
+  <button onclick="checkAnswer()">Tjek svar</button>
+
+  <div class="feedback" id="feedback"></div>
+
+  <script>
+    function checkAnswer() {
+      const userGuess = document.getElementById("guess").value.trim().toLowerCase();
+      const correct = "luksus ophold med bed & breakfast på heartland festival";
+
+      if (userGuess === correct) {
+        document.getElementById("feedback").innerHTML = "🎉 Korrekt! Du har gættet rebussen!";
+        document.getElementById("feedback").style.color = "green";
+      } else {
+        document.getElementById("feedback").innerHTML = "❌ Prøv igen!";
+        document.getElementById("feedback").style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
